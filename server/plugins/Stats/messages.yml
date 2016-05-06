@@ -1,0 +1,7 @@
+Plugin:
+  enabled: "&cPlugin enabled"
+  disabled: "&cPlugin disabled"
+
+SQL:
+  connected: "&6connected to MySQL Database"
+  failed: "&6could not connect to MySQL Server"

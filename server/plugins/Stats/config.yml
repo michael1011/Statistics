@@ -1,0 +1,9 @@
+# Stats by Michael1011
+# Version 0.0.1
+
+MySQL:
+  host: "localhost"
+  port: "3306"
+  database: "stats"
+  username: "root"
+  password: "psswrd"
