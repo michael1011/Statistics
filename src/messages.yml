@@ -3,5 +3,5 @@ Plugin:
   disabled: "&cPlugin disabled"
 
 SQL:
-  connected: "&6connected to MySQL Database"
+  connected: "&6connected to MySQL Server"
   failed: "&6could not connect to MySQL Server"
