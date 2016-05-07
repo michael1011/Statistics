@@ -1,5 +1,8 @@
 package eu.michael1011.main;
 
+import eu.michael1011.commands.Stats;
+import eu.michael1011.listeners.Join;
+import eu.michael1011.listeners.Kill;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
@@ -15,7 +18,7 @@ public class Main extends JavaPlugin {
 
     public static YamlConfiguration config, messages;
 
-    public static String prefix = ChatColor.translateAlternateColorCodes('&', "&5Stats: ");
+    public static String prefix = ChatColor.translateAlternateColorCodes('&', "&5[Statistics] ");
 
     public static ConsoleCommandSender console;
 
@@ -24,7 +27,12 @@ public class Main extends JavaPlugin {
         super.onEnable();
 
         createFiles();
+
+        startListeners();
+        startCommands();
+
         SQL.establishMySQL();
+        SQL.update("create table if not exists stats (uuid TEXT(100), name TEXT(100), deaths INT(255), killed INT(255), kills_entities INT(255), kills_players INT(255))");
 
         console = Bukkit.getConsoleSender();
 
@@ -41,7 +49,18 @@ public class Main extends JavaPlugin {
     public void onDisable() {
         super.onDisable();
 
+        SQL.closeCon();
+
         console.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Plugin.disabled")));
+    }
+
+    private void startListeners() {
+        new Join(this);
+        new Kill(this);
+    }
+
+    private void startCommands() {
+        new Stats(this);
     }
 
     private void createFiles() {

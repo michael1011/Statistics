@@ -2,6 +2,16 @@ Plugin:
   enabled: "&cPlugin enabled"
   disabled: "&cPlugin disabled"
 
+
 SQL:
-  connected: "&6connected to MySQL Server"
-  failed: "&6could not connect to MySQL Server"
+  connected: "&econnected to MySQL Server"
+  failed: "&4could not connect to MySQL Server"
+
+
+Commands:
+  usage: "&7---------- &eUsage &7----------"
+
+  stats:
+    help: "&e/stat <player>: &7shows the stats of <player>"
+
+    header: "&7---------- &Sats &7----------"

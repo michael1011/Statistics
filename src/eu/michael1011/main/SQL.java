@@ -10,7 +10,7 @@ public class SQL {
 
     private static String host, port, database, username, password;
 
-    public static void establishMySQL() {
+    static void establishMySQL() {
 
         host = config.getString("MySQL.host");
         port = config.getString("MySQL.port");
@@ -23,6 +23,16 @@ public class SQL {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    static void closeCon() {
+        try {
+            connection.close();
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private static Connection openConnection() throws SQLException, ClassNotFoundException {

@@ -1,0 +1,13 @@
+Plugin:
+  enabled: "&cPlugin enabled"
+  disabled: "&cPlugin disabled"
+
+SQL:
+  connected: "&econnected to MySQL Server"
+  failed: "&4could not connect to MySQL Server"
+
+Commands:
+  usage: "&7---------- &eUsage &7----------"
+
+  stats:
+    help: "&e/stats <player>: &7shows the stats of <player>"

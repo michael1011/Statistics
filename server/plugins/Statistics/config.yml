@@ -6,4 +6,5 @@ MySQL:
   port: "3306"
   database: "stats"
   username: "root"
-  password: "psswrd"
+  password: ""
+  # you have to connect to your MySQL server

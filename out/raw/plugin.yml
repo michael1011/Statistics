@@ -1,9 +1,12 @@
 main: eu.michael1011.main.Main
-name: Stats
+name: Statistics
 version: 0.0.1
-description: Collect stats from all of your players
+description: Collect stats from players
 author: Michael1011
 
 commands:
+  stat:
+    usage: "/stat <player>"
+    description: "shows the stats of a player"
 
 permissions:

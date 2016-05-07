@@ -7,3 +7,4 @@ MySQL:
   database: "stats"
   username: "root"
   password: "psswrd"
+  # you have to connect to your MySQL server
