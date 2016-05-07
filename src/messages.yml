@@ -12,6 +12,8 @@ SQL:
 
 Commands:
   usage: "&7---------- &eUsage &7----------"
+  lastLine: true
+  # By default there's the last line as long as the first. Diable that line with this (set to false).
 
   noPermissions: "You don't have enough permissions!"
 

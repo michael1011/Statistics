@@ -6,7 +6,7 @@ import static eu.michael1011.main.Main.config;
 
 public class SQL {
 
-    public static Connection connection;
+    static Connection connection;
 
     private static String host, port, database, username, password;
 

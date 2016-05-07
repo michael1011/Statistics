@@ -1,6 +1,5 @@
 package eu.michael1011.commands;
 
-import eu.michael1011.listeners.Join;
 import eu.michael1011.main.Main;
 import eu.michael1011.main.SQL;
 import org.bukkit.Bukkit;
@@ -9,11 +8,11 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static eu.michael1011.main.Main.messages;
 import static eu.michael1011.main.Main.prefix;
 
 public class Stats implements CommandExecutor {
@@ -23,10 +22,12 @@ public class Stats implements CommandExecutor {
     private String ipAddress = "not available", lastSeen = "not available", firstJoin = "not available";
     private int timesConnected = 0, onlineTime = 0;
 
-    private static YamlConfiguration messages = Main.messages;
+    private Boolean lastLine = messages.getBoolean("Commands.lastLine");
+
 
     public Stats(Main main) {
         main.getCommand("stat").setExecutor(this);
+        main.getCommand("stat").setTabCompleter(new StatsTab());
     }
 
     private void getPlayerData(String id) {
@@ -86,7 +87,11 @@ public class Stats implements CommandExecutor {
         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', usage));
         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Commands.stats.help")));
         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Commands.stats.args")));
-        sender.sendMessage(prefix+getLastString(usage.length()));
+
+        if(lastLine) {
+            sender.sendMessage(prefix+getLastString(usage.length()));
+        }
+
     }
 
     private void playerNotFound(String playerName, CommandSender sender) {
@@ -135,7 +140,10 @@ public class Stats implements CommandExecutor {
                         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', killsM));
                         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', killsEntitiesM));
                         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', killsPlayersM));
-                        sender.sendMessage(prefix+getLastString(header.length()));
+
+                        if(lastLine) {
+                            sender.sendMessage(prefix+getLastString(header.length()));
+                        }
 
                     } else {
                         playerNotFound(args[1], sender);
@@ -166,7 +174,10 @@ public class Stats implements CommandExecutor {
                         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', onlineTimeM));
                         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', lastSeenM));
                         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', firstJoinM));
-                        sender.sendMessage(prefix+getLastString(header.length()));
+
+                        if(lastLine) {
+                            sender.sendMessage(prefix+getLastString(header.length()));
+                        }
 
                     } else {
                         playerNotFound(args[1], sender);

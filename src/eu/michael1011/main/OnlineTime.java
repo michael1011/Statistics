@@ -1,6 +1,5 @@
-package eu.michael1011.listeners;
+package eu.michael1011.main;
 
-import eu.michael1011.main.SQL;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -8,11 +7,11 @@ import org.bukkit.plugin.Plugin;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class OnlineTime {
+class OnlineTime {
 
     private static int onlineTime = 0;
 
-    public static void trackTime(Plugin plugin) {
+    static void trackTime(Plugin plugin) {
         plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
             public void run() {
                 for(Player p : Bukkit.getOnlinePlayers()) {

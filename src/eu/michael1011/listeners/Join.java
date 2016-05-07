@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
+
 public class Join implements Listener {
 
     public Join(Main main) {
@@ -35,10 +36,6 @@ public class Join implements Listener {
         }
 
         if(!SQL.columnExists(id, "stats")) {
-            // todo: online time minutes or seconds
-
-            // todo: check for substring also on external ip
-
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             Date date = new Date();
 

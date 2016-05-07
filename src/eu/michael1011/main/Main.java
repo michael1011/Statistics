@@ -4,7 +4,6 @@ import eu.michael1011.commands.Stats;
 import eu.michael1011.listeners.Join;
 import eu.michael1011.listeners.Kill;
 import eu.michael1011.listeners.Leave;
-import eu.michael1011.listeners.OnlineTime;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -16,13 +15,14 @@ import java.io.*;
 
 public class Main extends JavaPlugin {
 
-    // todo: updater, config updater
+    // todo: updater, config updater, tab complete
 
-    public static YamlConfiguration config, messages;
+    public static YamlConfiguration messages;
+    static YamlConfiguration config;
 
     public static String prefix = ChatColor.translateAlternateColorCodes('&', "&e[Statistics] ");
 
-    public static ConsoleCommandSender console;
+    private static ConsoleCommandSender console;
 
     @Override
     public void onEnable() {
