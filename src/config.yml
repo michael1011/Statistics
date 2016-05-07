@@ -1,5 +1,12 @@
 # Stats by Michael1011
-# Version 0.0.1
+# Version 0.1.3
+
+ConfigVersion: "1"
+# Don't change this! It would destroy configuration!
+
+CollectMetrics: true
+# This plugin collects anonymous statistics (about your Minecraft and Java Version, your system,...) by default.
+# Set this to false to disable the tracking.
 
 MySQL:
   host: "localhost"

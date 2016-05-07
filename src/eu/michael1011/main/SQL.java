@@ -43,6 +43,23 @@ public class SQL {
         return connection;
     }
 
+    public static Boolean columnExists(String uuid, String table) {
+        try {
+            ResultSet rs = SQL.getResult("select * from "+table+" where uuid='"+uuid+"'");
+
+            assert rs != null;
+
+            if(rs.next()) {
+                return rs.getString(1) != null;
+            }
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
     public static void update(String s) {
         try {
             PreparedStatement ps = connection.prepareStatement(s);

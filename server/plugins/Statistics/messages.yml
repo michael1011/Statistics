@@ -1,13 +1,46 @@
 Plugin:
   enabled: "&cPlugin enabled"
   disabled: "&cPlugin disabled"
+  now: "now"
+  # translate the word now to your language
+
 
 SQL:
   connected: "&econnected to MySQL Server"
   failed: "&4could not connect to MySQL Server"
 
+
 Commands:
   usage: "&7---------- &eUsage &7----------"
 
+  noPermissions: "You don't have enough permissions!"
+
+  playerNotFound: "&cCould not find player &4%player%&c!"
+  # %player% is the player
+
   stats:
-    help: "&e/stats <player>: &7shows the stats of <player>"
+    help: "&e/stat <arg> <player>: &7shows the stats of <player>"
+    args: "&eavailable args: &7life, general"
+
+    header: "&7---------- &eStats of %player% &7----------"
+    # %player% is the player
+
+    life:
+      # %count% is the number
+      deaths: "&7Deaths: &e%count%"
+      killed: "&7Times killed: &e%count%"
+      # the times the player was killed by another player
+
+      kills: "&7Kills: &e%count%"
+      killsEntities: "&7Killed mobs: &e%count%"
+      killsPlayers: "&7Killed players: &e%count%"
+
+    general:
+      # %data% is the data from the MySQL database
+      ipAddress: "&7IP: &e%data%"
+      timesConnected: "&7Times connected: &e%data%"
+      onlineTime: "&7Online time: &e%data% min"
+      # The time the player was online (in minutes).
+
+      lastSeen: "&7Last seen: &e%data%"
+      firstJoin: "&7First join: &e%data%"

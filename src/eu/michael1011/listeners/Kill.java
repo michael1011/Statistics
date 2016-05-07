@@ -17,20 +17,22 @@ public class Kill implements Listener {
         main.getServer().getPluginManager().registerEvents(this, main);
     }
 
+    // todo: mobs
+
     @EventHandler
     public void PlayerKill(PlayerDeathEvent e) {
         Player killed = e.getEntity();
         UUID killedID = killed.getUniqueId();
-        String killedTr = killedID.toString().replaceAll("-", "");
+        String killedTr = killedID.toString();
 
-        ResultSet rsKilled = SQL.getResult("select * from stats where uuid='"+killedTr+"'");
+        ResultSet rsKilled = SQL.getResult("select * from stats_life where uuid='"+killedTr+"'");
 
         try {
             assert rsKilled != null;
 
             if(rsKilled.next()) {
-                int oldDeaths = rsKilled.getInt(3)+1;
-                SQL.update("update stats set deaths='"+oldDeaths+"' where uuid='"+killedTr+"'");
+                int oldDeaths = rsKilled.getInt(2)+1;
+                SQL.update("update stats_life set deaths='"+oldDeaths+"' where uuid='"+killedTr+"'");
             }
 
         } catch(SQLException e1) {
@@ -42,18 +44,20 @@ public class Kill implements Listener {
 
             Player killer = e.getEntity().getKiller();
             UUID killerID = killer.getUniqueId();
-            String killerTr = killerID.toString().replaceAll("-", "");
+            String killerTr = killerID.toString();
 
-            ResultSet rsKiller = SQL.getResult("select * from stats where uuid='"+killerTr+"'");
+            ResultSet rsKiller = SQL.getResult("select * from stats_life where uuid='"+killerTr+"'");
 
             try {
-                int oldKilled = rsKilled.getInt(4)+1;
-                SQL.update("update stats set killed='"+oldKilled+"' where uuid='"+killedTr+"'");
+                int oldKilled = rsKilled.getInt(3)+1;
+                SQL.update("update stats_life set killed='"+oldKilled+"' where uuid='"+killedTr+"'");
 
                 assert rsKiller != null;
 
-                int oldKillsPlayer = rsKiller.getInt(6);
-                SQL.update("update stats set kills_players='"+oldKillsPlayer+"' where uuid='"+killerTr+"'");
+                if(rsKiller.next()) {
+                    int oldKillsPlayer = rsKiller.getInt(5)+1;
+                    SQL.update("update stats_life set kills_players='"+oldKillsPlayer+"' where uuid='"+killerTr+"'");
+                }
 
             } catch(SQLException e1) {
                 e1.printStackTrace();
