@@ -5,7 +5,7 @@
 	<groupId>eu.michael1011.backpacks</groupId>
 	<packaging>jar</packaging>
 	<artifactId>Statistics</artifactId>
-	<version>0.1.3</version>
+	<version>1.0.0</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -64,9 +64,7 @@
 				<directory>src</directory>
 				<includes>
 					<include>config.yml</include>
-					<include>backpacks.yml</include>
-					<include>names.yml</include>
-					<include>GUI.yml</include>
+					<include>messages.yml</include>
 					<include>plugin.yml</include>
 				</includes>
 			</resource>

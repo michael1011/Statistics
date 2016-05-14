@@ -1,6 +1,7 @@
-main: eu.michael1011.main.Main
+main: eu.michael1011.statistics.main.Main
 name: Statistics
-version: 0.1.3
+version: 1.0.0
+softdepend: [StatisticsGUI]
 description: Collect stats from your players
 author: Michael1011
 

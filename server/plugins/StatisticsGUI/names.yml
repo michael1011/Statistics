@@ -1,0 +1,36 @@
+Inventory:
+  header: "&7Stats of: %player%"
+  # %player% is the owner of the shown stats
+
+Items:
+  close:
+  # the arrow to close a window
+    name: "&c&lClose"
+
+  general:
+    # the item with the general infos about the player (ip address)
+    name: "&7&lGeneral"
+
+    lore:
+    # %data% is the data from the database
+      ipAddress: "&7IP: &e%data%"
+      onlineTime: "&7Online time: &e%data% min"
+
+  dates:
+    name: "&7&lDates"
+
+    lore:
+      lastSeen: "&7Last seen: &e%data%"
+      firstJoin: "&7First join: &e%data%"
+      timesConnected: "&7Times connected: &e%data%"
+
+  life:
+    name: "&7&lLife"
+
+    lore:
+      deaths: "&7Deaths: &e%data%"
+      killed: "&7Times killed: &e%data%"
+      kills: "&7Kills: &e%data%"
+      # kills = killsEntities + killsPlayers
+      killsEntities: "&7Killed entities: &e%data%"
+      killsPlayers: "&7Killed players: &e%data%"

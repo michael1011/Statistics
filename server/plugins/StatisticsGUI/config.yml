@@ -1,0 +1,16 @@
+# StatisticsGUI by Michael1011
+# Version 0.0.1
+
+ConfigVersion: "1"
+
+CollectMetrics: true
+# This plugin collects anonymous statistics (about your Minecraft and Java Version, your system,...) by default.
+# Set this to false to disable the tracking.
+
+MySQL:
+  host: "localhost"
+  port: "3306"
+  database: "stats"
+  username: "root"
+  password: ""
+  # you have to connect to your MySQL server

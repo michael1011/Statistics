@@ -8,6 +8,10 @@ CollectMetrics: true
 # This plugin collects anonymous statistics (about your Minecraft and Java Version, your system,...) by default.
 # Set this to false to disable the tracking.
 
+Interval:
+  ServerStats: 15
+  # in wich intervall should be stats of the server collected (in minutes, minimum 1)
+
 MySQL:
   host: "localhost"
   port: "3306"

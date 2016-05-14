@@ -1,17 +1,21 @@
 Plugin:
   enabled: "&cPlugin enabled"
   disabled: "&cPlugin disabled"
+  otherPluginMissing: "The plugin %plugin% is missing. Install it to use this feature!"
+  # %plugin% is the missing plugin
   now: "now"
   # translate the word now to your language
 
 
 SQL:
   connected: "&econnected to MySQL Server"
-  failed: "&4could not connect to MySQL Server"
+  failed: "&4could not connect to MySQL Server. &4Check your preferences in the config file!"
 
 
 Commands:
   usage: "&7---------- &eUsage &7----------"
+  lastLine: true
+  # By default there's the last line as long as the first. Diable that line with this (set to false).
 
   noPermissions: "You don't have enough permissions!"
 
@@ -19,11 +23,15 @@ Commands:
   # %player% is the player
 
   stats:
+    helpServer: "&e/stat server: &7shows the newest stats of the server"
+    helpGUI: "&e/stat GUI <player>: &7opens a gui; <player> is optional"
     help: "&e/stat <arg> <player>: &7shows the stats of <player>"
     args: "&eavailable args: &7life, general"
 
     header: "&7---------- &eStats of %player% &7----------"
     # %player% is the player
+
+
 
     life:
       # %count% is the number
@@ -44,3 +52,13 @@ Commands:
 
       lastSeen: "&7Last seen: &e%data%"
       firstJoin: "&7First join: &e%data%"
+
+    server:
+      # %data% is the data from the MySQL database
+      time: "&7Time: &e%data%"
+      tps: "&7TPS: &e%data%"
+      online: "&7Status: &e%data%"
+      playersOnline: "&7Players: &e%data%"
+      ram: "&7RAM: &e%data%"
+      freeRam: "&7Free RAM: &e%data%"
+      ramUsage: "&7RAM usage: &e%data%"

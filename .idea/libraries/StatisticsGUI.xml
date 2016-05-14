@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="StatisticsGUI">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/server/plugins/StatisticsGUI.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
