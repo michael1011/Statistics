@@ -12,8 +12,9 @@
 
 config-version: 8
 settings:
-  debug: false
   save-user-cache-on-stop-only: false
+  bungeecord: false
+  late-bind: false
   sample-count: 12
   player-shuffle: 0
   filter-creative-items: true
@@ -21,8 +22,6 @@ settings:
   int-cache-limit: 1024
   moved-wrongly-threshold: 0.0625
   moved-too-quickly-multiplier: 10.0
-  bungeecord: false
-  late-bind: false
   timeout-time: 60
   restart-on-crash: true
   restart-script: ./start.sh
@@ -34,15 +33,10 @@ settings:
       max: 2048.0
     attackDamage:
       max: 2048.0
-messages:
-  whitelist: You are not whitelisted on this server!
-  unknown-command: Unknown command. Type "/help" for help.
-  server-full: The server is full!
-  outdated-client: Outdated client! Please use {0}
-  outdated-server: Outdated server! I'm still on {0}
-  restart: Server is restarting
+  debug: false
 commands:
   tab-complete: 0
+  log: true
   spam-exclusions:
   - /skill
   silent-commandblock-console: false
@@ -51,14 +45,19 @@ commands:
   - summon
   - testforblock
   - tellraw
-  log: true
+messages:
+  whitelist: You are not whitelisted on this server!
+  unknown-command: Unknown command. Type "/help" for help.
+  server-full: The server is full!
+  outdated-client: Outdated client! Please use {0}
+  outdated-server: Outdated server! I'm still on {0}
+  restart: Server is restarting
 stats:
   disable-saving: false
   forced-stats: {}
 world-settings:
   default:
     verbose: true
-    mob-spawn-range: 4
     nerf-spawner-mobs: false
     growth:
       cactus-modifier: 100
@@ -69,6 +68,7 @@ world-settings:
       sapling-modifier: 100
       wheat-modifier: 100
       netherwart-modifier: 100
+    mob-spawn-range: 4
     entity-activation-range:
       animals: 32
       monsters: 32
@@ -98,12 +98,12 @@ world-settings:
     max-tick-time:
       tile: 50
       entity: 50
+    zombie-aggressive-towards-villager: true
     item-despawn-rate: 6000
     merge-radius:
       item: 2.5
       exp: 3.0
     arrow-despawn-rate: 1200
-    zombie-aggressive-towards-villager: true
     enable-zombie-pigmen-portal-spawns: true
     wither-spawn-sound-radius: 0
     view-distance: 10

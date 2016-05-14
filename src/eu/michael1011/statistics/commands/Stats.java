@@ -3,6 +3,7 @@ package eu.michael1011.statistics.commands;
 import eu.michael1011.statistics.main.Main;
 import eu.michael1011.statistics.main.SQL;
 import eu.michael1011.statisticsgui.gui.ShowPlayer;
+import eu.michael1011.statisticsgui.gui.ShowServer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -53,6 +54,7 @@ public class Stats implements CommandExecutor {
         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', usage));
         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Commands.stats.helpServer")));
         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Commands.stats.helpGUI")));
+        sender.sendMessage(prefix+"");
         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Commands.stats.help")));
         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Commands.stats.args")));
 
@@ -107,15 +109,7 @@ public class Stats implements CommandExecutor {
                     }
 
                 } else if(args[0].equalsIgnoreCase("gui")) {
-
-                    if(pl.getServer().getPluginManager().getPlugin("StatisticsGUI") != null) {
-                        // todo: open GUI, this with <player> argument
-                        // todo: show a overview here
-
-                    } else {
-                        String message = messages.getString("Plugin.otherPluginMissing").replaceAll("%plugin%", "StatisticsGUI");
-                        sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', message));
-                    }
+                    sendHelp(sender);
 
                 } else {
                     sendHelp(sender);
@@ -195,22 +189,27 @@ public class Stats implements CommandExecutor {
 
                 } else if(args[0].equalsIgnoreCase("gui")) {
                     if(pl.getServer().getPluginManager().getPlugin("StatisticsGUI") != null) {
-
-                        @SuppressWarnings("deprecation")
-                        OfflinePlayer target = Bukkit.getOfflinePlayer(args[1]);
-
+                        
                         if(sender instanceof Player) {
                             Player p = (Player) sender;
+                            
+                            if(!args[1].equalsIgnoreCase("server")) {
+                                @SuppressWarnings("deprecation")
+                                OfflinePlayer target = Bukkit.getOfflinePlayer(args[1]);
 
-                            if(SQL.columnExists(p.getUniqueId().toString(), "stats")) {
-                                ShowPlayer.showPlayer(p, target);
+                                if(SQL.columnExists(target.getUniqueId().toString(), "stats")) {
+                                    ShowPlayer.showPlayer(p, target);
+
+                                } else {
+                                    playerNotFound(args[1], sender);
+                                }
 
                             } else {
-                                playerNotFound(args[1], sender);
+                                ShowServer.showServer(p);
                             }
 
                         } else {
-                            // todo: message: only players
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Commands.onlyPlayers")));
                         }
 
                     } else {

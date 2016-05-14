@@ -17,6 +17,8 @@ Commands:
   lastLine: true
   # By default there's the last line as long as the first. Diable that line with this (set to false).
 
+  onlyPlayers: "&cOnly players can use this command!"
+
   noPermissions: "You don't have enough permissions!"
 
   playerNotFound: "&cCould not find player &4%player%&c!"

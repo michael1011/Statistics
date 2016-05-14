@@ -14,8 +14,6 @@ class StatsTab implements TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command cmd, String s, String[] args) {
 
-        // todo: gui
-
         if(cmd.getName().equalsIgnoreCase("stat")) {
             int length = args.length;
             List<String> list = new ArrayList<>();

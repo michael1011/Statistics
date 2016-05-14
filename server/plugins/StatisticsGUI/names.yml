@@ -34,3 +34,28 @@ Items:
       # kills = killsEntities + killsPlayers
       killsEntities: "&7Killed entities: &e%data%"
       killsPlayers: "&7Killed players: &e%data%"
+
+  server:
+  # the gui that opens when you want to see the stats of the server
+
+    time:
+      name: "&7&lTime"
+
+      lore:
+        time: "&7Time: %e%data%"
+        tps: "&7TPS: &e%data%"
+
+    online:
+      name: "&7&lOnline"
+
+      lore:
+        status: "&7Status: %data%"
+        players: "&7Online players: &e%data%"
+
+    ram:
+      name: "&7&lRam"
+
+      lore:
+        ram: "&7Ram: &e%data% MB"
+        freeRam: "&7Free ram: &e%data% MB"
+        ramUsage: "&7Ram Usage: &e%data%"
