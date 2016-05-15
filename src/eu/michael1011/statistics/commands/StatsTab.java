@@ -25,11 +25,19 @@ class StatsTab implements TabCompleter {
                 list.add("gui");
 
             } else if(length == 2) {
-                if(!args[0].equalsIgnoreCase("server")) {
+                if(args[0].equalsIgnoreCase("gui")) {
+                    for(Player p : Bukkit.getOnlinePlayers()) {
+                        list.add(p.getName());
+                    }
+
+                    list.add("server");
+
+                } else if(!args[0].equalsIgnoreCase("server")) {
                     for(Player p : Bukkit.getOnlinePlayers()) {
                         list.add(p.getName());
                     }
                 }
+
             }
 
             return list;

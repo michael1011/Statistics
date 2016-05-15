@@ -53,7 +53,7 @@ class ServerStats {
                         "'"+String.valueOf(freeRam)+"', '"+String.valueOf((usedRam*100)/totalRam)+"%"+"')");
 
             }
-        }, interval, interval);
+        }, 1200, interval);
     }
 
     private static boolean testNet(String site) {
@@ -64,9 +64,6 @@ class ServerStats {
             return true;
         } catch (IOException e) {
             return false;
-        } finally {
-            try {sock.close();}
-            catch (IOException e) {}
         }
     }
 

@@ -2,6 +2,7 @@ package eu.michael1011.statistics.commands;
 
 import eu.michael1011.statistics.main.Main;
 import eu.michael1011.statistics.main.SQL;
+import eu.michael1011.statisticsgui.gui.ShowOverview;
 import eu.michael1011.statisticsgui.gui.ShowPlayer;
 import eu.michael1011.statisticsgui.gui.ShowServer;
 import org.bukkit.Bukkit;
@@ -109,7 +110,21 @@ public class Stats implements CommandExecutor {
                     }
 
                 } else if(args[0].equalsIgnoreCase("gui")) {
-                    sendHelp(sender);
+                    if(pl.getServer().getPluginManager().getPlugin("StatisticsGUI") != null) {
+
+                        if(sender instanceof Player) {
+                            Player p = (Player) sender;
+
+                            ShowOverview.showOverview(p);
+
+                        } else {
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Commands.onlyPlayers")));
+                        }
+
+                    } else {
+                        String message = messages.getString("Plugin.otherPluginMissing").replaceAll("%plugin%", "StatisticsGUI");
+                        sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', message));
+                    }
 
                 } else {
                     sendHelp(sender);

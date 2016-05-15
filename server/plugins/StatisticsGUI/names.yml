@@ -2,6 +2,11 @@ Inventory:
   header: "&7Stats of: %player%"
   # %player% is the owner of the shown stats
 
+  overview:
+    header: "&7Overview"
+    server: "&7Server"
+    # the name of the server in the overview
+
 Items:
   close:
   # the arrow to close a window
@@ -42,7 +47,7 @@ Items:
       name: "&7&lTime"
 
       lore:
-        time: "&7Time: %e%data%"
+        time: "&7Time: &e%data%"
         tps: "&7TPS: &e%data%"
 
     online:

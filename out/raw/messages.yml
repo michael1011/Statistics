@@ -26,7 +26,7 @@ Commands:
 
   stats:
     helpServer: "&e/stat server: &7shows the newest stats of the server"
-    helpGUI: "&e/stat GUI <player>: &7opens a gui; <player> is optional"
+    helpGUI: "&e/stat gui <player>: &7opens a gui; <player> is optional"
     help: "&e/stat <arg> <player>: &7shows the stats of <player>"
     args: "&eavailable args: &7life, general"
 
