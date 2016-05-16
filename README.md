@@ -1,3 +1,5 @@
 # Statistics
 
-This is a Bukkit/Spigot plugin to collect Statistics about your users. It's in heavy development and I don't recommend to use it yet.
+This is a Bukkit/Spigot plugin to collect Statistics about your users.
+
+To get more information about this plugin please read the [wiki](https://github.com/michael1011/Statistics/wiki).
