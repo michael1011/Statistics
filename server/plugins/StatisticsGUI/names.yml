@@ -6,6 +6,8 @@ Inventory:
     header: "&7Overview"
     server: "&7Server"
     # the name of the server in the overview
+    tooMuchPlayers: "&cThere are too many people online. &4Only 27 players are supported. &cPlease open a gui with /stat gui <player>"
+    # when more than 54 players are online
 
 Items:
   close:
@@ -64,3 +66,9 @@ Items:
         ram: "&7Ram: &e%data% MB"
         freeRam: "&7Free ram: &e%data% MB"
         ramUsage: "&7Ram Usage: &e%data%"
+        getMap: "&7Click to get a Map with statistics."
+
+
+Map:
+  ram:
+    name: "&7Ram usage"

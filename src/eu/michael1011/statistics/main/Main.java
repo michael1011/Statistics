@@ -15,8 +15,6 @@ import java.io.*;
 
 public class Main extends JavaPlugin {
 
-    // todo: updater
-
     public static YamlConfiguration messages;
     static YamlConfiguration config;
 
@@ -37,6 +35,10 @@ public class Main extends JavaPlugin {
                 e.printStackTrace();
             }
 
+        }
+
+        if(config.getBoolean("Updater.enable")) {
+            update();
         }
 
         startListeners();
@@ -76,7 +78,7 @@ public class Main extends JavaPlugin {
             SQL.closeCon();
         }
 
-        console.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Plugin.disabled")));
+        Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Plugin.disabled")));
     }
 
     private void startListeners() {
@@ -87,6 +89,43 @@ public class Main extends JavaPlugin {
 
     private void startCommands() {
         new Stats(this);
+    }
+
+    private void update() {
+        Updater updater = new Updater(this, 100073, this.getFile(), Updater.UpdateType.DEFAULT, false);
+
+        if(!config.getBoolean("Updater.autoDownload")) {
+            updater = new Updater(this, 100073, this.getFile(), Updater.UpdateType.NO_DOWNLOAD, false);
+        }
+
+        Updater.UpdateResult result = updater.getResult();
+
+        switch(result) {
+            case SUCCESS:
+                Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', config.getString("Updater.updateFinished")
+                .replaceAll("%version%", updater.getLatestName())));
+                break;
+            case NO_UPDATE:
+                console.sendMessage("works");
+                break;
+            case DISABLED:
+                break;
+            case FAIL_DOWNLOAD:
+                break;
+            case FAIL_DBO:
+                break;
+            case FAIL_NOVERSION:
+                break;
+            case FAIL_BADID:
+                break;
+            case FAIL_APIKEY:
+                break;
+            case UPDATE_AVAILABLE:
+                Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', config.getString("Updater.updateAvailable")
+                        .replaceAll("%version%", updater.getLatestName()).replaceAll("%downloadLink%", updater.getLatestFileLink())));
+                break;
+        }
+
     }
 
     private void createFiles() {
@@ -111,6 +150,21 @@ public class Main extends JavaPlugin {
             messages.load(messagesF);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+
+        if(Integer.valueOf(config.getString("ConfigVersion")) == 1) {
+            config.set("Updater.enable", true);
+            config.set("Updater.autoDownload", true);
+            config.set("Updater.updateFinished", "&7The plugin was updated successful to version &e%version%&7! Reload or restart the server to enable it.");
+            config.set("Updater.updateAvailable", "&7A new version (&e%version%&7) a available! &7Download it here: &e%downloadLink%");
+            config.set("ConfigVersion", 2);
+
+            try {
+                config.save(configF);
+            } catch(IOException e) {
+                console.sendMessage(prefix+"&4Failed to update config files. Please delete them.");
+            }
+
         }
 
     }
