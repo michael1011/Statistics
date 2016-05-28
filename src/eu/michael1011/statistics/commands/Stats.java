@@ -2,6 +2,7 @@ package eu.michael1011.statistics.commands;
 
 import eu.michael1011.statistics.main.Main;
 import eu.michael1011.statistics.main.SQL;
+import eu.michael1011.statistics.main.ServerStats;
 import eu.michael1011.statisticsgui.gui.ShowOverview;
 import eu.michael1011.statisticsgui.gui.ShowPlayer;
 import eu.michael1011.statisticsgui.gui.ShowServer;
@@ -54,11 +55,11 @@ public class Stats implements CommandExecutor {
         sender.sendMessage("");
         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', usage));
         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Commands.stats.helpServer")));
+        sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Commands.stats.helpRefresh")));
         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Commands.stats.helpGUI")));
         sender.sendMessage(prefix+"");
         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Commands.stats.help")));
         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Commands.stats.args")));
-
 
         if(lastLine) {
             sender.sendMessage(prefix+getLastString(usage.length()));
@@ -203,16 +204,16 @@ public class Stats implements CommandExecutor {
                     }
 
                 } else if(args[0].equalsIgnoreCase("gui")) {
-                    if(pl.getServer().getPluginManager().getPlugin("StatisticsGUI") != null) {
-                        
-                        if(sender instanceof Player) {
+                    if (pl.getServer().getPluginManager().getPlugin("StatisticsGUI") != null) {
+
+                        if (sender instanceof Player) {
                             Player p = (Player) sender;
-                            
-                            if(!args[1].equalsIgnoreCase("server")) {
+
+                            if (!args[1].equalsIgnoreCase("server")) {
                                 @SuppressWarnings("deprecation")
                                 OfflinePlayer target = Bukkit.getOfflinePlayer(args[1]);
 
-                                if(SQL.columnExists(target.getUniqueId().toString(), "stats")) {
+                                if (SQL.columnExists(target.getUniqueId().toString(), "stats")) {
                                     ShowPlayer.showPlayer(p, target);
 
                                 } else {
@@ -224,13 +225,18 @@ public class Stats implements CommandExecutor {
                             }
 
                         } else {
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Commands.onlyPlayers")));
+                            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', messages.getString("Commands.onlyPlayers")));
                         }
 
                     } else {
                         String message = messages.getString("Plugin.otherPluginMissing").replaceAll("%plugin%", "StatisticsGUI");
-                        sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', message));
+                        sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', message));
                     }
+
+                } else if(args[0].equalsIgnoreCase("server")) {
+                    ServerStats.collectStats();
+
+                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Commands.stats.refreshed")));
 
                 } else {
                     sendHelp(sender);

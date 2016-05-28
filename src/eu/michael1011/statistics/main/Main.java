@@ -60,9 +60,12 @@ public class Main extends JavaPlugin {
             SQL.update("create table if not exists stats_server (time TEXT(100), tps TEXT(100), online TEXT(100), " +
                     "playersOnline BIGINT(100), ram TEXT(100), freeRam TEXT(100), ramUsage TEXT(100))");
 
+            SQL.update("create table if not exists stats_update (refresh TEXT(100))");
+
             TPSTracker.startTracking(this);
             OnlineTime.trackTime(this);
             ServerStats.trackServer(this);
+            ServerStats.listenRefresh(this);
 
             console.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Plugin.enabled")));
 
@@ -93,10 +96,6 @@ public class Main extends JavaPlugin {
 
     private void update() {
         Updater updater = new Updater(this, 100073, this.getFile(), Updater.UpdateType.DEFAULT, false);
-
-        if(!config.getBoolean("Updater.autoDownload")) {
-            updater = new Updater(this, 100073, this.getFile(), Updater.UpdateType.NO_DOWNLOAD, false);
-        }
 
         Updater.UpdateResult result = updater.getResult();
 
@@ -154,7 +153,6 @@ public class Main extends JavaPlugin {
 
         if(Integer.valueOf(config.getString("ConfigVersion")) == 1) {
             config.set("Updater.enable", true);
-            config.set("Updater.autoDownload", true);
             config.set("Updater.updateFinished", "&7The plugin was updated successful to version &e%version%&7! Reload or restart the server to enable it.");
             config.set("Updater.updateAvailable", "&7A new version (&e%version%&7) a available! &7Download it here: &e%downloadLink%");
             config.set("ConfigVersion", 2);
@@ -165,6 +163,30 @@ public class Main extends JavaPlugin {
                 console.sendMessage(prefix+"&4Failed to update config files. Please delete them.");
             }
 
+        }
+
+        if(Integer.valueOf(config.getString("ConfigVersion")) == 2) {
+            config.set("Interval.ServerStats", 1);
+            config.set("ConfigVersion", 3);
+
+            try {
+                config.save(configF);
+            } catch(IOException e) {
+                console.sendMessage(prefix+"&4Failed to update config files. Please delete them.");
+            }
+        }
+
+        if(Integer.valueOf(config.getString("ConfigVersion")) == 3) {
+            messages.set("Commands.stats.helpRefresh", "&e/stat server refresh: &7refreshes the server stats");
+            messages.set("Commands.stats.refreshed", "&7Refreshed server stats!");
+            config.set("ConfigVersion", 3);
+
+            try {
+                config.save(configF);
+                messages.save(messagesF);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
     }

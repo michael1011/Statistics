@@ -26,13 +26,16 @@ class StatsTab implements TabCompleter {
 
             } else if(length == 2) {
                 if(args[0].equalsIgnoreCase("gui")) {
-                    for(Player p : Bukkit.getOnlinePlayers()) {
+                    for (Player p : Bukkit.getOnlinePlayers()) {
                         list.add(p.getName());
                     }
 
                     list.add("server");
 
-                } else if(!args[0].equalsIgnoreCase("server")) {
+                } else if(args[0].equalsIgnoreCase("server")) {
+                    list.add("refresh");
+
+                } else {
                     for(Player p : Bukkit.getOnlinePlayers()) {
                         list.add(p.getName());
                     }

@@ -26,13 +26,15 @@ Commands:
 
   stats:
     helpServer: "&e/stat server: &7shows the newest stats of the server"
+    helpRefresh: "&e/stat server refresh: &7refreshes the server stats"
     helpGUI: "&e/stat gui <player>: &7opens a gui; <player> is optional"
     help: "&e/stat <arg> <player>: &7shows the stats of <player>"
     args: "&eavailable args: &7life, general"
 
+    refreshed: "&7Refreshed server stats!"
+
     header: "&7---------- &eStats of %player% &7----------"
     # %player% is the player
-
 
 
     life:
