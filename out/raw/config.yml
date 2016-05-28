@@ -1,7 +1,7 @@
 # Statistics by Michael1011
-# Version 1.0.1
+# Version 1.0.3
 
-ConfigVersion: "2"
+ConfigVersion: "4"
 
 CollectMetrics: true
 # This plugin collects anonymous statistics (about your Minecraft and Java Version, your system,...) by default.
@@ -9,8 +9,6 @@ CollectMetrics: true
 
 Updater:
   enable: true
-  autoDownload: true
-  # should the plugin download new version automatically
 
   updateFinished: "&7The plugin was updated successful to version &e%version%&7! Reload or restart the server to enable it."
   # this is only if the autoDownload is true and the download was successful
@@ -20,7 +18,7 @@ Updater:
 
 
 Interval:
-  ServerStats: 5
+  ServerStats: 1
   # in wich intervall should be stats of the server collected (in minutes, minimum 1)
 
 MySQL:
