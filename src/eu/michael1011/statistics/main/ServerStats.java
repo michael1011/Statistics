@@ -48,7 +48,7 @@ public class ServerStats {
                 }
 
             }
-        }, 200, 200);
+        }, 150, 150);
     }
 
     public static void collectStats() {
