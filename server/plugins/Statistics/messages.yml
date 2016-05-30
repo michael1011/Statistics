@@ -1,66 +1,43 @@
 Plugin:
-  enabled: "&cPlugin enabled"
-  disabled: "&cPlugin disabled"
-  otherPluginMissing: "The plugin %plugin% is missing. Install it to use this feature!"
-  # %plugin% is the missing plugin
-  now: "now"
-  # translate the word now to your language
-
-
+  enabled: '&cPlugin enabled'
+  disabled: '&cPlugin disabled'
+  otherPluginMissing: The plugin %plugin% is missing. Install it to use this feature!
+  now: now
 SQL:
-  connected: "&econnected to MySQL Server"
-  failed: "&4could not connect to MySQL Server. &4Check your preferences in the config file!"
-
-
+  connected: '&econnected to MySQL Server'
+  failed: '&4could not connect to MySQL Server. &4Check your preferences in the config
+    file!'
 Commands:
-  usage: "&7---------- &eUsage &7----------"
+  usage: '&7---------- &eUsage &7----------'
   lastLine: true
-  # By default there's the last line as long as the first. Diable that line with this (set to false).
-
-  onlyPlayers: "&cOnly players can use this command!"
-
-  noPermissions: "You don't have enough permissions!"
-
-  playerNotFound: "&cCould not find player &4%player%&c!"
-  # %player% is the player
-
+  onlyPlayers: '&cOnly players can use this command!'
+  noPermissions: You don't have enough permissions!
+  playerNotFound: '&cCould not find player &4%player%&c!'
   stats:
-    helpServer: "&e/stat server: &7shows the newest stats of the server"
-    helpGUI: "&e/stat GUI <player>: &7opens a gui; <player> is optional"
-    help: "&e/stat <arg> <player>: &7shows the stats of <player>"
-    args: "&eavailable args: &7life, general"
-
-    header: "&7---------- &eStats of %player% &7----------"
-    # %player% is the player
-
-
-
+    helpServer: '&e/stat server: &7shows the newest stats of the server'
+    helpGUI: '&e/stat GUI <player>: &7opens a gui; <player> is optional'
+    help: '&e/stat <arg> <player>: &7shows the stats of <player>'
+    args: '&eavailable args: &7life, general'
+    header: '&7---------- &eStats of %player% &7----------'
     life:
-      # %count% is the number
-      deaths: "&7Deaths: &e%count%"
-      killed: "&7Times killed: &e%count%"
-      # the times the player was killed by another player
-
-      kills: "&7Kills: &e%count%"
-      killsEntities: "&7Killed mobs: &e%count%"
-      killsPlayers: "&7Killed players: &e%count%"
-
+      deaths: '&7Deaths: &e%count%'
+      killed: '&7Times killed: &e%count%'
+      kills: '&7Kills: &e%count%'
+      killsEntities: '&7Killed mobs: &e%count%'
+      killsPlayers: '&7Killed players: &e%count%'
     general:
-      # %data% is the data from the MySQL database
-      ipAddress: "&7IP: &e%data%"
-      timesConnected: "&7Times connected: &e%data%"
-      onlineTime: "&7Online time: &e%data% min"
-      # The time the player was online (in minutes).
-
-      lastSeen: "&7Last seen: &e%data%"
-      firstJoin: "&7First join: &e%data%"
-
+      ipAddress: '&7IP: &e%data%'
+      timesConnected: '&7Times connected: &e%data%'
+      onlineTime: '&7Online time: &e%data% min'
+      lastSeen: '&7Last seen: &e%data%'
+      firstJoin: '&7First join: &e%data%'
     server:
-      # %data% is the data from the MySQL database
-      time: "&7Time: &e%data%"
-      tps: "&7TPS: &e%data%"
-      online: "&7Status: &e%data%"
-      playersOnline: "&7Players: &e%data%"
-      ram: "&7RAM: &e%data%"
-      freeRam: "&7Free RAM: &e%data%"
-      ramUsage: "&7RAM usage: &e%data%"
+      time: '&7Time: &e%data%'
+      tps: '&7TPS: &e%data%'
+      online: '&7Status: &e%data%'
+      playersOnline: '&7Players: &e%data%'
+      ram: '&7RAM: &e%data%'
+      freeRam: '&7Free RAM: &e%data%'
+      ramUsage: '&7RAM usage: &e%data%'
+    helpRefresh: '&e/stat server refresh: &7refreshes the server stats'
+    refreshed: '&7Refreshed server stats!'

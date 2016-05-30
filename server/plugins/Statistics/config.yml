@@ -1,10 +1,10 @@
 # Stats by Michael1011
 # Version 0.1.3
 
-ConfigVersion: 2
+ConfigVersion: 3
 CollectMetrics: true
 Interval:
-  ServerStats: 15
+  ServerStats: 1
 MySQL:
   host: localhost
   port: '3306'
